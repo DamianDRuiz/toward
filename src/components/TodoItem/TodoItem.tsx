@@ -25,13 +25,13 @@ function TodoItem({
     >
       <h2 onClick={(e) => handleTodoClick(e)} data-id={id}>
         {title}
+        <button
+          onClick={() => setExpanded((prev) => !prev)}
+          className="expandButton"
+        >
+          {expanded ? 'Collapse' : 'Expand'}
+        </button>
       </h2>
-      <button
-        onClick={() => setExpanded((prev) => !prev)}
-        className="expandButton"
-      >
-        {expanded ? 'Collapse' : 'Expand'}
-      </button>
       <Expandable expanded={expanded}>
         <p>{description}</p>
         <p>Status: {completed ? 'Completed' : 'Not Completed'}</p>
