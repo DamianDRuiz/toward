@@ -13,7 +13,7 @@ export function App() {
     handleAddTodoSubmit,
   } = useTodos(DEFAULT_TODOS)
   return (
-    <div className={styles.toward}>
+    <div className={`toward ${styles.toward}`}>
       <TodoListComponent todos={todos} handleTodoClick={handleTodoClick} />
       <TodoInput
         input={addTodoInput}
