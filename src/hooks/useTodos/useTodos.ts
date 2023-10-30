@@ -1,15 +1,42 @@
-import { useState, useCallback } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { Todo } from 'src/util/types'
+import { useImmer } from 'use-immer'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface UseTodos {
-  count: number
-  increment: () => void
+  todos: Todo[]
+  addTodoInput: string
+  handleAddTodoInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleAddTodoSubmit: (e: FormEvent) => void
 }
 
-export function useTodos(): UseTodos {
-  const [count, setCount] = useState(0)
-  const increment = useCallback(() => setCount((x) => x + 1), [])
-  return { count, increment }
+export function useTodos(optionalTodos: Todo[] = []): UseTodos {
+  const [todos, setTodos] = useImmer<Todo[]>(optionalTodos)
+  const [addTodoInput, setAddTodoInput] = useState<string>('')
+
+  const handleAddTodoInput = (e: ChangeEvent<HTMLInputElement>) =>
+    setAddTodoInput(e.target.value)
+
+  const handleAddTodoSubmit = (e: FormEvent) => {
+    e.preventDefault()
+
+    setTodos((draft) => {
+      draft.push({
+        title: addTodoInput,
+        description: null,
+        completed: false,
+        due: null,
+      })
+    })
+
+    setAddTodoInput('')
+  }
+
+  return {
+    todos,
+    addTodoInput,
+    handleAddTodoInput,
+    handleAddTodoSubmit,
+  }
 }
 
 export default useTodos
