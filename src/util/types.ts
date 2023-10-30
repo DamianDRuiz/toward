@@ -7,3 +7,7 @@ export interface Todo {
 }
 
 export type TodoList = Todo[]
+
+export type todoClickHandler = (
+  e: React.SyntheticEvent<HTMLHeadingElement>
+) => void

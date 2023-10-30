@@ -1,9 +1,9 @@
-//import styles from './TodoItem.module.scss'
+import styles from './TodoItem.module.scss'
 
-import { Todo } from 'src/util/types'
+import { Todo, todoClickHandler } from 'src/util/types'
 
 interface TodoItemProps extends Todo {
-  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
+  handleTodoClick: todoClickHandler
 }
 
 function TodoItem({
@@ -15,7 +15,9 @@ function TodoItem({
   handleTodoClick,
 }: TodoItemProps) {
   return (
-    <div>
+    <div
+      className={`todoItem ${completed ? styles.completed : styles.incomplete}`}
+    >
       <h2 onClick={(e) => handleTodoClick(e)} data-id={id}>
         {title}
       </h2>

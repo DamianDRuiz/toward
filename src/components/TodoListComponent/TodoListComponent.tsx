@@ -1,11 +1,11 @@
 //import styles from './TodoListComponent.module.scss'
 
-import { TodoList } from 'src/util/types'
+import { TodoList, todoClickHandler } from 'src/util/types'
 import TodoItem from '../TodoItem/TodoItem'
 
 interface TodoListProps {
   todos: TodoList
-  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
+  handleTodoClick: todoClickHandler
 }
 
 function TodoListComponent({ todos, handleTodoClick }: TodoListProps) {
@@ -20,12 +20,7 @@ function TodoListComponent({ todos, handleTodoClick }: TodoListProps) {
       handleTodoClick={handleTodoClick}
     />
   ))
-  return (
-    <div>
-      List
-      {todoElements}
-    </div>
-  )
+  return <div>{todoElements}</div>
 }
 
 export default TodoListComponent

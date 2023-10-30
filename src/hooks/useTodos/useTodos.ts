@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Todo } from 'src/util/types'
+import { Todo, todoClickHandler } from 'src/util/types'
 import { useImmer } from 'use-immer'
 
 export interface UseTodos {
   todos: Todo[]
   addTodoInput: string
-  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
+  handleTodoClick: todoClickHandler
   handleAddTodoInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleAddTodoSubmit: (e: FormEvent) => void
 }
