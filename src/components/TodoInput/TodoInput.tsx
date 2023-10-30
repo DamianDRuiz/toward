@@ -1,9 +1,26 @@
 //import styles from './TodoInput.module.scss'
 
-interface TodoInputProps {}
+import { ChangeEvent, FormEvent } from 'react'
 
-function TodoInput({}: TodoInputProps) {
-  return <div>Input</div>
+interface TodoInputProps {
+  input: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onSubmit: (e: FormEvent) => void
+}
+
+function TodoInput({ input, onChange, onSubmit }: TodoInputProps) {
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Add todo"
+          onChange={onChange}
+          value={input}
+        />
+      </form>
+    </div>
+  )
 }
 
 export default TodoInput
