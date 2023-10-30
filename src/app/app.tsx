@@ -39,7 +39,12 @@ function TodoItem({ title, description, completed, due }: TodoItemProps) {
       <h2>{title}</h2>
       <p>{description}</p>
       <p>Status: {completed ? 'Completed' : 'Not Completed'}</p>
-      <p>Due: {due ? due.toString() : 'Whenever'}</p>
+      <p>
+        Due:{' '}
+        {due
+          ? `${due.getMonth() + 1}/${due.getDate()}/${due.getFullYear()}`
+          : 'Whenever'}
+      </p>
     </div>
   )
 }
