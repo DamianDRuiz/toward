@@ -1,8 +1,8 @@
-interface Todo {
+export interface Todo {
   title: string
-  description: string
+  description: string | null
   completed: boolean
   due: Date | null
 }
 
-type TodoList = Todo[]
+export type TodoList = Todo[]
