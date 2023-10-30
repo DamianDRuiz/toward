@@ -1,16 +1,37 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-
-import NxWelcome from './nx-welcome';
+import { DEFAULT_TODOS } from '../constants'
 
 export function App() {
   return (
     <>
-      <NxWelcome title="toward" />
-
-      <div />
+      <TodoList todos={DEFAULT_TODOS} />
+      <TodoInput />
     </>
-  );
+  )
 }
 
-export default App;
+interface TodoListProps {
+  todos: TodoList
+}
+
+function TodoList({ todos }: TodoListProps) {
+  return (
+    <div>
+      List
+      <TodoItem />
+    </div>
+  )
+}
+
+interface TodoItemProps {}
+
+function TodoItem() {
+  return <div>Item</div>
+}
+
+interface TodoInputProps {}
+
+function TodoInput() {
+  return <div>Input</div>
+}
+
+export default App
