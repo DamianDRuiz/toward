@@ -4,5 +4,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.prettierPath": "./node_modules/prettier",
-  "prettier.printWidth": 120
+  "prettier.printWidth": 150
 }
