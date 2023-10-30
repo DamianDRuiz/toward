@@ -4,8 +4,8 @@ import { useImmer } from 'use-immer'
 
 export interface UseTodos {
   todos: Todo[]
-  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
   addTodoInput: string
+  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
   handleAddTodoInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleAddTodoSubmit: (e: FormEvent) => void
 }
@@ -28,7 +28,6 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
 
   const handleAddTodoSubmit = (e: FormEvent) => {
     e.preventDefault()
-
     setTodos((draft) => {
       draft.push({
         id: draft.length,
@@ -44,8 +43,8 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
 
   return {
     todos,
-    handleTodoClick,
     addTodoInput,
+    handleTodoClick,
     handleAddTodoInput,
     handleAddTodoSubmit,
   }

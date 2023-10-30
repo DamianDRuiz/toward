@@ -6,8 +6,8 @@ import { DEFAULT_TODOS } from 'src/util/constants'
 export function App() {
   const {
     todos,
-    handleTodoClick,
     addTodoInput,
+    handleTodoClick,
     handleAddTodoInput,
     handleAddTodoSubmit,
   } = useTodos(DEFAULT_TODOS)
