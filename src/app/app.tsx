@@ -4,11 +4,16 @@ import useTodos from 'src/hooks/useTodos/useTodos'
 import { DEFAULT_TODOS } from 'src/util/constants'
 
 export function App() {
-  const { todos, addTodoInput, handleAddTodoInput, handleAddTodoSubmit } =
-    useTodos(DEFAULT_TODOS)
+  const {
+    todos,
+    handleTodoClick,
+    addTodoInput,
+    handleAddTodoInput,
+    handleAddTodoSubmit,
+  } = useTodos(DEFAULT_TODOS)
   return (
     <>
-      <TodoListComponent todos={todos} />
+      <TodoListComponent todos={todos} handleTodoClick={handleTodoClick} />
       <TodoInput
         input={addTodoInput}
         onChange={handleAddTodoInput}

@@ -4,6 +4,7 @@ import { useImmer } from 'use-immer'
 
 export interface UseTodos {
   todos: Todo[]
+  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
   addTodoInput: string
   handleAddTodoInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleAddTodoSubmit: (e: FormEvent) => void
@@ -12,6 +13,15 @@ export interface UseTodos {
 export function useTodos(optionalTodos: Todo[] = []): UseTodos {
   const [todos, setTodos] = useImmer<Todo[]>(optionalTodos)
   const [addTodoInput, setAddTodoInput] = useState<string>('')
+
+  const handleTodoClick = (e: React.SyntheticEvent<HTMLHeadingElement>) =>
+    setTodos((draft) => {
+      if (!(e.target instanceof HTMLHeadingElement)) return
+      if (e.target.dataset.id == undefined) return
+
+      const todo = draft[parseInt(e.target.dataset.id)]
+      todo.completed = !todo.completed
+    })
 
   const handleAddTodoInput = (e: ChangeEvent<HTMLInputElement>) =>
     setAddTodoInput(e.target.value)
@@ -34,6 +44,7 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
 
   return {
     todos,
+    handleTodoClick,
     addTodoInput,
     handleAddTodoInput,
     handleAddTodoSubmit,

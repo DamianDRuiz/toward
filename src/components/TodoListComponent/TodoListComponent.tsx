@@ -5,16 +5,19 @@ import TodoItem from '../TodoItem/TodoItem'
 
 interface TodoListProps {
   todos: TodoList
+  handleTodoClick: (e: React.SyntheticEvent<HTMLHeadingElement>) => void
 }
 
-function TodoListComponent({ todos }: TodoListProps) {
-  const todoElements = todos.map((todo) => (
+function TodoListComponent({ todos, handleTodoClick }: TodoListProps) {
+  const todoElements = todos.map((todo, key) => (
     <TodoItem
+      key={key}
       id={todo.id}
       title={todo.title}
       description={todo.description}
       completed={todo.completed}
       due={todo.due}
+      handleTodoClick={handleTodoClick}
     />
   ))
   return (
