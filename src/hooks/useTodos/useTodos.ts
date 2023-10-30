@@ -5,14 +5,18 @@ import { useImmer } from 'use-immer'
 export interface UseTodos {
   todos: Todo[]
   addTodoInput: string
+  addTodoDescriptionInput: string
   handleTodoClick: todoClickHandler
   handleAddTodoInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleAddTodoDescriptionInput: (e: ChangeEvent<HTMLTextAreaElement>) => void
   handleAddTodoSubmit: (e: FormEvent) => void
 }
 
 export function useTodos(optionalTodos: Todo[] = []): UseTodos {
   const [todos, setTodos] = useImmer<Todo[]>(optionalTodos)
   const [addTodoInput, setAddTodoInput] = useState<string>('')
+  const [addTodoDescriptionInput, setAddTodoDescriptionInput] =
+    useState<string>('')
 
   const handleTodoClick = (e: React.SyntheticEvent<HTMLHeadingElement>) =>
     setTodos((draft) => {
@@ -25,14 +29,18 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
   const handleAddTodoInput = (e: ChangeEvent<HTMLInputElement>) =>
     setAddTodoInput(e.target.value)
 
+  const handleAddTodoDescriptionInput = (e: ChangeEvent<HTMLTextAreaElement>) =>
+    setAddTodoDescriptionInput(e.target.value)
+
   const handleAddTodoSubmit = (e: FormEvent) => {
     e.preventDefault()
     setAddTodoInput('')
+    setAddTodoDescriptionInput('')
     setTodos((draft) => {
       draft.push({
         id: draft.length,
         title: addTodoInput,
-        description: null,
+        description: addTodoDescriptionInput,
         completed: false,
         due: null,
       })
@@ -42,8 +50,10 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
   return {
     todos,
     addTodoInput,
+    addTodoDescriptionInput,
     handleTodoClick,
     handleAddTodoInput,
+    handleAddTodoDescriptionInput,
     handleAddTodoSubmit,
   }
 }
