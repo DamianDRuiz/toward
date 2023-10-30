@@ -51,7 +51,7 @@ function TodoItem({ title, description, completed, due }: TodoItemProps) {
 
 interface TodoInputProps {}
 
-function TodoInput() {
+function TodoInput({}: TodoInputProps) {
   return <div>Input</div>
 }
 
