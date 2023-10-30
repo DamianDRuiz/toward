@@ -8,8 +8,10 @@ export function App() {
   const {
     todos,
     addTodoInput,
+    addTodoDescriptionInput,
     handleTodoClick,
     handleAddTodoInput,
+    handleAddTodoDescriptionInput,
     handleAddTodoSubmit,
   } = useTodos(DEFAULT_TODOS)
   return (
@@ -19,6 +21,8 @@ export function App() {
         input={addTodoInput}
         onChange={handleAddTodoInput}
         onSubmit={handleAddTodoSubmit}
+        descriptionInput={addTodoDescriptionInput}
+        onDescriptionChange={handleAddTodoDescriptionInput}
       />
     </div>
   )

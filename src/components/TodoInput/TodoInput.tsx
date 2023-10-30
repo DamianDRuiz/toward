@@ -6,10 +6,18 @@ import styles from './TodoInput.module.scss'
 interface TodoInputProps {
   input: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  descriptionInput: string
+  onDescriptionChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
   onSubmit: (e: FormEvent) => void
 }
 
-function TodoInput({ input, onChange, onSubmit }: TodoInputProps) {
+function TodoInput({
+  input,
+  onChange,
+  descriptionInput,
+  onDescriptionChange,
+  onSubmit,
+}: TodoInputProps) {
   const [expanded, setExpanded] = useState<boolean>(false)
   return (
     <div className={`${styles.container}`}>
@@ -31,7 +39,11 @@ function TodoInput({ input, onChange, onSubmit }: TodoInputProps) {
           value={input}
         />
         <Expandable expanded={expanded}>
-          <textarea placeholder="Details..."></textarea>
+          <textarea
+            onChange={onDescriptionChange}
+            placeholder="Details..."
+            value={descriptionInput}
+          ></textarea>
         </Expandable>
       </form>
     </div>
