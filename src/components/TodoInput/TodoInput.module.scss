@@ -15,15 +15,11 @@
     margin-top: 0;
   }
 
-  button {
-    margin-bottom: 10px;
-    float: right;
-  }
-
   input,
   textarea {
     width: 100%;
   }
+
   input {
     &[type='text'] {
       margin-bottom: 10px;
