@@ -28,6 +28,7 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
 
   const handleAddTodoSubmit = (e: FormEvent) => {
     e.preventDefault()
+    setAddTodoInput('')
     setTodos((draft) => {
       draft.push({
         id: draft.length,
@@ -37,8 +38,6 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
         due: null,
       })
     })
-
-    setAddTodoInput('')
   }
 
   return {
