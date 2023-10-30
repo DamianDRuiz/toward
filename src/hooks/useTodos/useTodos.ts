@@ -18,7 +18,6 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
     setTodos((draft) => {
       if (!(e.target instanceof HTMLHeadingElement)) return
       if (e.target.dataset.id == undefined) return
-
       const todo = draft[parseInt(e.target.dataset.id)]
       todo.completed = !todo.completed
     })
