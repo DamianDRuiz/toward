@@ -10,6 +10,7 @@ interface TodoListProps {
 function TodoListComponent({ todos }: TodoListProps) {
   const todoElements = todos.map((todo) => (
     <TodoItem
+      id={todo.id}
       title={todo.title}
       description={todo.description}
       completed={todo.completed}

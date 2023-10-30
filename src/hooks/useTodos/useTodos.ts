@@ -21,6 +21,7 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
 
     setTodos((draft) => {
       draft.push({
+        id: draft.length,
         title: addTodoInput,
         description: null,
         completed: false,
