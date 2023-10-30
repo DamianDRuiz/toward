@@ -1,6 +1,7 @@
-//import styles from './TodoInput.module.scss'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import Expandable from '../Expandable/Expandable'
 
-import { ChangeEvent, FormEvent } from 'react'
+import styles from './TodoInput.module.scss'
 
 interface TodoInputProps {
   input: string
@@ -9,15 +10,29 @@ interface TodoInputProps {
 }
 
 function TodoInput({ input, onChange, onSubmit }: TodoInputProps) {
+  const [expanded, setExpanded] = useState<boolean>(false)
   return (
-    <div>
+    <div className={`${styles.container}`}>
+      <h3>
+        Add a Task
+        <button
+          onClick={() => setExpanded((prev) => !prev)}
+          className="expandButton"
+        >
+          {expanded ? 'Less' : 'More'}
+        </button>
+      </h3>
+
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          placeholder="Add todo"
+          placeholder="Task..."
           onChange={onChange}
           value={input}
         />
+        <Expandable expanded={expanded}>
+          <textarea placeholder="Details..."></textarea>
+        </Expandable>
       </form>
     </div>
   )
