@@ -3,6 +3,11 @@
 .toward {
   * {
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h2,
+  h3 {
+    font-weight: 400;
   }
   .todoItem {
     &:first-of-type {
@@ -11,6 +16,10 @@
   }
   button.expandButton {
     font-size: 12px;
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 70px;
+    text-align: center;
   }
 }
