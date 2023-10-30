@@ -1,6 +1,6 @@
 //import styles from './TodoItem.module.scss'
 
-import { Todo } from 'src/types'
+import { Todo } from 'src/util/types'
 
 interface TodoItemProps extends Todo {}
 

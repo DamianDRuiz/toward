@@ -1,6 +1,6 @@
 //import styles from './TodoListComponent.module.scss'
 
-import { TodoList } from 'src/types'
+import { TodoList } from 'src/util/types'
 import TodoItem from '../TodoItem/TodoItem'
 
 interface TodoListProps {
