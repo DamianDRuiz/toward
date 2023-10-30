@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 .toward {
+  * {
+    box-sizing: border-box;
+  }
   .todoItem {
-    &:first-of-type h2 {
-      margin-top: 0;
+    &:first-of-type {
+      border-top: none;
     }
+  }
+  button.expandButton {
+    font-size: 12px;
   }
 }
