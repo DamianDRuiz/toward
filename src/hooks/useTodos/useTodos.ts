@@ -6,6 +6,8 @@ export interface UseTodos {
   todos: Todo[]
   addTodoInput: string
   addTodoDescriptionInput: string
+  due: Date
+  setDue: React.Dispatch<React.SetStateAction<Date>>
   handleTodoClick: todoClickHandler
   handleAddTodoInput: (e: ChangeEvent<HTMLInputElement>) => void
   handleAddTodoDescriptionInput: (e: ChangeEvent<HTMLTextAreaElement>) => void
@@ -17,6 +19,7 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
   const [addTodoInput, setAddTodoInput] = useState<string>('')
   const [addTodoDescriptionInput, setAddTodoDescriptionInput] =
     useState<string>('')
+  const [due, setDue] = useState<Date>(new Date())
 
   const handleTodoClick = (e: React.SyntheticEvent<HTMLHeadingElement>) =>
     setTodos((draft) => {
@@ -42,7 +45,7 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
         title: addTodoInput,
         description: addTodoDescriptionInput,
         completed: false,
-        due: null,
+        due: due,
       })
     })
   }
@@ -51,9 +54,11 @@ export function useTodos(optionalTodos: Todo[] = []): UseTodos {
     todos,
     addTodoInput,
     addTodoDescriptionInput,
+    due,
     handleTodoClick,
     handleAddTodoInput,
     handleAddTodoDescriptionInput,
+    setDue,
     handleAddTodoSubmit,
   }
 }

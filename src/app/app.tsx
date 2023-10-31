@@ -9,9 +9,11 @@ export function App() {
     todos,
     addTodoInput,
     addTodoDescriptionInput,
+    due,
     handleTodoClick,
     handleAddTodoInput,
     handleAddTodoDescriptionInput,
+    setDue,
     handleAddTodoSubmit,
   } = useTodos(DEFAULT_TODOS)
   return (
@@ -20,9 +22,11 @@ export function App() {
       <TodoInput
         input={addTodoInput}
         onChange={handleAddTodoInput}
-        onSubmit={handleAddTodoSubmit}
         descriptionInput={addTodoDescriptionInput}
         onDescriptionChange={handleAddTodoDescriptionInput}
+        due={due}
+        setDue={setDue}
+        onSubmit={handleAddTodoSubmit}
       />
     </div>
   )
